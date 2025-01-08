@@ -13,20 +13,20 @@ let turnO = true;
 winnerWindow.classList.add("hide");
 
 
-newGameBtn.addEventListener("click",()=>{
+newGameBtn.addEventListener("click", () => {
     btnEnabled();
     turnO = true;
     winnerWindow.classList.add("hide");
-    boxes.forEach((box)=>{
-        box.innerText="";
+    boxes.forEach((box) => {
+        box.innerText = "";
     })
 })
-resetBtn.addEventListener("click",()=>{
+resetBtn.addEventListener("click", () => {
     btnEnabled();
     turnO = true;
     winnerWindow.classList.add("hide");
-    boxes.forEach((box)=>{
-        box.innerText="";
+    boxes.forEach((box) => {
+        box.innerText = "";
     })
 })
 
@@ -43,7 +43,7 @@ const btnEnabled = () => {
 }
 
 const winnerMsg = (pos) => {
-    msg.innerText=`The Winner is ${pos}`;
+    msg.innerText = `The Winner is ${pos}`;
 }
 
 boxes.forEach((box) => {
@@ -51,9 +51,11 @@ boxes.forEach((box) => {
         console.log("button was clicked!");
         if (turnO) {
             box.innerText = "O";
+            box.style.color = "#FF6347";
             turnO = false;
         } else {
             box.innerText = "X";
+            box.style.color = "#1E90FF";
             turnO = true;
         }
         box.disabled = true;
@@ -77,3 +79,23 @@ const checkWinner = () => {
         }
     }
 }
+
+let playInfo = document.querySelector("#play-info");
+let playRules = document.querySelector(".play-rules");
+let main = document.querySelector("main");
+playRules.classList.add("hide");
+let press = true;
+playInfo.addEventListener("click",()=>{
+    
+    if(press){
+        playRules.classList.remove("hide");
+        main.classList.add("blur");
+        playInfo.classList.remove("blur");
+        press=false;
+    }else{
+        playRules.classList.add("hide");
+        main.classList.remove("blur");
+        press=true;
+    }
+    
+})
